@@ -8,4 +8,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  #for mocking external services requests
+  require 'webmock/rspec'
+  WebMock.disable_net_connect!(allow_localhost: true)
 end

@@ -21,7 +21,12 @@ Or install it yourself as:
 ## Usage
 
 TODO: Write usage instructions here
+  
+// send express otp, returns otp code
 
+// verify express otp, returns boolean
+
+// send transactional message
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
