@@ -12,4 +12,11 @@ RSpec.configure do |config|
   #for mocking external services requests
   require 'webmock/rspec'
   WebMock.disable_net_connect!(allow_localhost: true)
+
+  #For adding auth key
+  config.before(:all) do
+    Msg91sms.configure do |config|
+      config.authkey = 'put auth key here'
+    end
+  end
 end
