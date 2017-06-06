@@ -1,5 +1,6 @@
 require "msg91sms/version"
 require "msg91sms/configuration"
+require "errors/configuration"
 
 
 module Msg91sms

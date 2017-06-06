@@ -9,14 +9,16 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
+  #For adding auth key
+  config.before(:all) do
+    Msg91sms.configure do |config|
+      config.authkey = ENV['MSG91_AUTHKEY']
+    end
+  end
+
   #for mocking external services requests
   require 'webmock/rspec'
   WebMock.disable_net_connect!(allow_localhost: true)
 
-  #For adding auth key
-  config.before(:all) do
-    Msg91sms.configure do |config|
-      config.authkey = 'put auth key here'
-    end
-  end
+
 end
