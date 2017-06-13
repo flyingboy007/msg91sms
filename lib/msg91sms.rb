@@ -1,6 +1,7 @@
 require "msg91sms/version"
 require "msg91sms/configuration"
 require "errors/configuration"
+require "msg91sms/transactional"
 
 
 module Msg91sms
@@ -25,5 +26,13 @@ module Msg91sms
   def self.configure
     yield(configuration)
   end
+
+  class TransactionalSms
+    def self.deliver(country_code, mobiles, message, sender)
+      Transactional.send_transactional(country_code, mobiles, message, sender)
+    end
+
+  end
+
 
 end

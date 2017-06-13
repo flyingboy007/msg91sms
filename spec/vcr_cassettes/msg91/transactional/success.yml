@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://control.msg91.com/api/sendhttp.php?authkey=146436AOhXtn0Qf6dT58d8066a&country=91&message=message&mobiles=9446716017&response=json&route=4&sender=RDTEST
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - control.msg91.com
+      Cache-Control:
+      - no-cache
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 13 Jun 2017 08:07:36 GMT
+      Content-Type:
+      - text/html
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - PHPSESSID=0mteemvn8fuh7shinrm35l0vv1; expires=Wed, 14-Jun-2017 08:07:36 GMT;
+        Max-Age=86400; path=/; HttpOnly
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: UTF-8
+      string: '{"message":"37666d6d4b4a363533303836","type":"success"}'
+    http_version: 
+  recorded_at: Tue, 13 Jun 2017 08:07:36 GMT
+recorded_with: VCR 3.0.3

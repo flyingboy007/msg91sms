@@ -21,12 +21,41 @@ Or install it yourself as:
 ## Usage
 
 TODO: Write usage instructions here
-  
+
+_**Transactional sms**_
+```ruby
+     Msg91sms::TransactionalSms.deliver(sender, country_code, mobile, message)  
+```
+_sender:_ 6 digit sender name eg:`"PTSHOP"`
+
+_country_code:_ country code without + or zeros EG: `"91"` for india
+
+_mobile:_ mobile number without starting zeros or country code eg: `"7234567891"`
+
+_message:_ message, eg: `"hi"`
+
+**Example**
+      
+     `request=Msg91sms::TransactionalSms.deliver("91", "7234567891", "message", "RDTEST")`
+
+     #success response
+     #if type=='success' message will contain just an id from msg91
+
+     {"message"=>"37666d6d4b4a364443303836", "type"=>"success"}
+     
+     #error response
+     #if type=='error' message will contain the reason for error
+     {"message":"Please Enter Valid Sender ID","type":"error"}
+
 // send express otp, returns otp code
 
 // verify express otp, returns boolean
 
 // send transactional message
+
+**Response**
+
+Returns json
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
