@@ -51,10 +51,15 @@ _message:_ message, eg: `"hi"`
 // send transactional message
 
 ## Development
+We hope that you will consider contributing to Msg91sms. Please read this short overview for some information about how to get started:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+* provide tests and documentation whenever possible. It is very unlikely that we will accept new features or functionality into Msg91sms without the proper testing and documentation. When fixing a bug, provide a failing test case that your patch solves.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+* open a GitHub Pull Request with your patches and we will review your contribution and respond as quickly as possible. Keep in mind that this is an open source project, and it may take me some time to get back to you. Your patience is very much appreciated.
+
+
+
+You will usually want to write tests for your changes. To run the test suite, go into top-level directory and run "bundle install" and "bundle exec rspec".
 
 ## Contributing
 
