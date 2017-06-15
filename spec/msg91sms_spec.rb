@@ -20,7 +20,7 @@ RSpec.describe Msg91sms do
 
   it "returns success if successful" do
     VCR.use_cassette("msg91/transactional/success") do
-      request=Msg91sms::TransactionalSms.deliver("RDTEST", "91", "9446716017g", "message")
+      request=Msg91sms::TransactionalSms.deliver("RDTEST", "91", "9446716017", "message")
       expect(request['type']).to eq('success')
       puts request
     end

@@ -17,6 +17,16 @@ And then execute:
 Or install it yourself as:
 
     $ gem install msg91sms
+    
+In the initialiser add authkey:
+
+You can find your authkey here
+https://control.msg91.com/user/index.php#api
+```ruby
+Msg91sms.configure do |config|
+  config.authkey = "Put your msg94 authkey here"
+end
+```
 
 ## Usage
 
@@ -33,8 +43,11 @@ _mobile:_ mobile number without starting zeros or country code eg: `"7234567891"
 _message:_ message, eg: `"hi"`
 
 **Example**
-     #Always returns json 
+
+    
+     #returns response in json format
      response=Msg91sms::TransactionalSms.deliver("91", "7234567891", "message", "RDTEST")
+    
 
      #success response
      #if type=='success' message will contain just an id from msg91

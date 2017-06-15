@@ -4,7 +4,7 @@ module Msg91sms
   require 'json'
   class Transactional
     def self.send_transactional(sender, country_code, mobiles, message)
-    url = URI("https://control.msg91.com/api/sendhttp.php?authkey=#{ENV['MSG91_AUTHKEY']}&mobiles=#{mobiles}&message=#{message}&sender=#{sender}&route=4&country=#{country_code}&response=json")
+    url = URI("https://control.msg91.com/api/sendhttp.php?authkey=#{Msg91sms.configuration.authkey}&mobiles=#{mobiles}&message=#{message}&sender=#{sender}&route=4&country=#{country_code}&response=json")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
