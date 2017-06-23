@@ -1,3 +1,3 @@
 module Msg91sms
-  VERSION = "0.1.1.alpha"
+  VERSION = "1.0"
 end
