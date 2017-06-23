@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 23 Jun 2017 19:34:55 GMT
+      - Fri, 23 Jun 2017 15:19:56 GMT
       Content-Type:
       - text/html
       Transfer-Encoding:
@@ -33,7 +33,7 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - PHPSESSID=dq9g8g6ne0668hqivok1gqjif0; expires=Sat, 24-Jun-2017 19:34:55 GMT;
+      - PHPSESSID=p8akq8kqn7ni23gbo9qbht37f3; expires=Sat, 24-Jun-2017 15:19:56 GMT;
         Max-Age=86400; path=/; HttpOnly
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
@@ -49,5 +49,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"message":"Please Enter valid mobile no","type":"error"}'
     http_version: 
-  recorded_at: Fri, 23 Jun 2017 19:34:55 GMT
+  recorded_at: Fri, 23 Jun 2017 15:19:56 GMT
 recorded_with: VCR 3.0.3

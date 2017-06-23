@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 23 Jun 2017 19:34:37 GMT
+      - Fri, 23 Jun 2017 15:16:22 GMT
       Content-Type:
       - text/html
       Transfer-Encoding:
@@ -33,7 +33,7 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - PHPSESSID=8fg98uct66uqrpnu54sm0rbus2; expires=Sat, 24-Jun-2017 19:34:37 GMT;
+      - PHPSESSID=j5e6h8ul3ougnb5band28av6j4; expires=Sat, 24-Jun-2017 15:16:22 GMT;
         Max-Age=86400; path=/; HttpOnly
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
@@ -47,7 +47,7 @@ http_interactions:
       - 1; mode=block
     body:
       encoding: UTF-8
-      string: '{"message":"37667861644b363230323239","type":"success"}'
+      string: '{"message":"376677745476313337393136","type":"success"}'
     http_version: 
-  recorded_at: Fri, 23 Jun 2017 19:34:36 GMT
+  recorded_at: Fri, 23 Jun 2017 15:16:23 GMT
 recorded_with: VCR 3.0.3
