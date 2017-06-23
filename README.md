@@ -1,4 +1,4 @@
-# Msg91sms
+# Msg91sms [![Build Status](https://travis-ci.org/flyingboy007/msg91sms.svg?branch=master)](https://travis-ci.org/flyingboy007/msg91sms)
 
 A ruby gem for using the Msg91 REST API
 
@@ -46,7 +46,7 @@ _message:_ message, eg: `"hi"`
 
     
      #returns response in json format
-     response=Msg91sms::TransactionalSms.deliver("91", "7234567891", "message", "RDTEST")
+     response=Msg91sms::TransactionalSms.deliver("RDTEST", "91", "7234567891", "message")
     
 
      #success response
@@ -56,6 +56,43 @@ _message:_ message, eg: `"hi"`
      #error response
      #if type=='error' message will contain the reason for error
      {"message":"Please Enter Valid Sender ID","type":"error"}
+**_Otp_** 
+// send custom otp, returns json
+
+**1) Custom Otp**
+_**Transactional sms**_
+```ruby
+     Msg91sms::OtpSms.deliver(sender, country_code, mobile, message, otp)  
+```
+_sender:_ 6 digit sender name eg:`"PTSHOP"`
+
+_country_code:_ country code without + or zeros EG: `"91"` for india
+
+_mobile:_ mobile number without starting zeros or country code eg: `"7234567891"`
+
+_message:_ message, eg: `"2277 is your otp for this transaction"`
+
+_otp:_ message, eg: `"2277"`
+
+**Example**
+
+    
+     #returns response in json format
+     response=Msg91sms::OtpSms.deliver("RDTEST", "91", "7234567891", "Your otp is 2222", "2222")
+    
+
+     #success response
+     #if type=='success' message will contain just an id from msg91
+     {"message"=>"37666d6d4b4a364443303836", "type"=>"success"}
+     
+     #error response
+     #if type=='error' message will contain the reason for error
+     {"message":"Please Enter Valid Sender ID","type":"error"}
+
+  
+
+// verify custom otp, returns boolean
+
 
 // send express otp, returns otp code
 

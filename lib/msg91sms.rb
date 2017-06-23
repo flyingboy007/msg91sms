@@ -2,6 +2,7 @@ require "msg91sms/version"
 require "msg91sms/configuration"
 require "errors/configuration"
 require "msg91sms/transactional"
+require "msg91sms/otp"
 
 
 module Msg91sms
@@ -28,10 +29,16 @@ module Msg91sms
   end
 
   class TransactionalSms
-    def self.deliver(country_code, mobiles, message, sender)
-      Transactional.send_transactional(country_code, mobiles, message, sender)
+    def self.deliver(sender, country_code, mobiles, message)
+      Transactional.send_transactional(sender, country_code, mobiles, message)
     end
 
+  end
+
+  class OtpSms
+    def self.deliver(sender, country_code, mobiles, message=nil, otp=nil)
+      Otp.send_otp(sender, country_code, mobiles, message, otp)
+    end
   end
 
 

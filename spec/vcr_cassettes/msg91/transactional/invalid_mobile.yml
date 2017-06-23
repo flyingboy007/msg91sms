@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://control.msg91.com/api/sendhttp.php?authkey=146436AOhXtn0Qf6dT58d8066a&country=94&message=RDTEST&mobiles=message&response=json&route=4&sender=91
+    uri: https://control.msg91.com/api/sendhttp.php?authkey=146436AOhXtn0Qf6dT58d8066a&country=91&message=message&mobiles=94&response=json&route=4&sender=RDTEST
     body:
       encoding: UTF-8
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Jun 2017 08:07:35 GMT
+      - Fri, 23 Jun 2017 15:16:20 GMT
       Content-Type:
       - text/html
       Transfer-Encoding:
@@ -33,7 +33,7 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - PHPSESSID=5ghuraq5k2up7v058vcf6uhuo7; expires=Wed, 14-Jun-2017 08:07:35 GMT;
+      - PHPSESSID=9gukivjcco58stjn74200ul0a2; expires=Sat, 24-Jun-2017 15:16:20 GMT;
         Max-Age=86400; path=/; HttpOnly
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
@@ -47,7 +47,7 @@ http_interactions:
       - 1; mode=block
     body:
       encoding: UTF-8
-      string: '{"message":"Please Enter Valid Sender ID","type":"error"}'
+      string: '{"message":"Please Enter valid mobile no","type":"error"}'
     http_version: 
-  recorded_at: Tue, 13 Jun 2017 08:07:35 GMT
+  recorded_at: Fri, 23 Jun 2017 15:16:20 GMT
 recorded_with: VCR 3.0.3
