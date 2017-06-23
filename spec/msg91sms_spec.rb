@@ -24,15 +24,29 @@ RSpec.describe Msg91sms do
   context "custom Otp Sms" do
     it "sends returns error on invalid mobile" do
       VCR.use_cassette("msg91/custom_otp/invalid_mobile") do
-        request=Msg91sms::OtpSms.deliver("RDTEST", "94", "94", "Your otp is 2222", "2222")
+        request=Msg91sms::OtpSms.generate("RDTEST", "94", "94", "Your otp is 2222", "2222")
         expect(request['type']).to eq('error')
       end
     end
 
     it "returns success if successful" do
       VCR.use_cassette("msg91/custom_otp/success") do
-        request=Msg91sms::OtpSms.deliver("RDTEST", "91", "8553445441", "Your otp is 2222", "2222")
+        request=Msg91sms::OtpSms.generate("RDTEST", "91", "8553445441", "Your otp is 2222", "2222")
         expect(request['type']).to eq('success')
+      end
+    end
+
+    it "verifies valid otp" do
+      VCR.use_cassette("msg91/custom_otp/verify/success") do
+        request=Msg91sms::OtpSms.verification("91", "8553445441", "2222")
+        expect(request['type']).to eq('success')
+      end
+    end
+
+    it "error invalid otp" do
+      VCR.use_cassette("msg91/custom_otp/verify/invalid_otp") do
+        request=Msg91sms::OtpSms.verification("91", "8553445441", "2252")
+        expect(request['type']).to eq('error')
       end
     end
   end
@@ -40,14 +54,14 @@ RSpec.describe Msg91sms do
   context "Normal Otp Sms" do
     it "sends returns error on invalid mobile" do
       VCR.use_cassette("msg91/normal_otp/invalid_mobile") do
-        request=Msg91sms::OtpSms.deliver("RDTEST", "94", "94")
+        request=Msg91sms::OtpSms.generate("RDTEST", "94", "94")
         expect(request['type']).to eq('error')
       end
     end
 
     it "returns success if successful" do
       VCR.use_cassette("msg91/normal_otp/success") do
-        request=Msg91sms::OtpSms.deliver("RDTEST", "91", "8553445441")
+        request=Msg91sms::OtpSms.generate("RDTEST", "91", "8553445441")
         expect(request['type']).to eq('success')
       end
     end

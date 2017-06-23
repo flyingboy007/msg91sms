@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://control.msg91.com/api/sendhttp.php?authkey=146436AOhXtn0Qf6dT58d8066a&country=91&message=message&mobiles=9446716017&response=json&route=4&sender=RDTEST
+    uri: https://control.msg91.com/api/verifyRequestOTP.php?authkey=146436AOhXtn0Qf6dT58d8066a&mobile=918553445441&otp=2252
     body:
       encoding: UTF-8
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 23 Jun 2017 19:34:37 GMT
+      - Fri, 23 Jun 2017 19:36:40 GMT
       Content-Type:
       - text/html
       Transfer-Encoding:
@@ -33,7 +33,7 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - PHPSESSID=8fg98uct66uqrpnu54sm0rbus2; expires=Sat, 24-Jun-2017 19:34:37 GMT;
+      - PHPSESSID=v6hl0cqrvej21fjidrf3qv33n1; expires=Sat, 24-Jun-2017 19:36:40 GMT;
         Max-Age=86400; path=/; HttpOnly
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
@@ -47,7 +47,9 @@ http_interactions:
       - 1; mode=block
     body:
       encoding: UTF-8
-      string: '{"message":"37667861644b363230323239","type":"success"}'
+      string: |2-
+
+        {"message":"otp_not_verified","type":"error"}
     http_version: 
-  recorded_at: Fri, 23 Jun 2017 19:34:36 GMT
+  recorded_at: Fri, 23 Jun 2017 19:36:40 GMT
 recorded_with: VCR 3.0.3

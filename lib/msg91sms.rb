@@ -32,12 +32,15 @@ module Msg91sms
     def self.deliver(sender, country_code, mobiles, message)
       Transactional.send_transactional(sender, country_code, mobiles, message)
     end
-
   end
 
   class OtpSms
-    def self.deliver(sender, country_code, mobiles, message=nil, otp=nil)
+    def self.generate(sender, country_code, mobiles, message=nil, otp=nil)
       Otp.send_otp(sender, country_code, mobiles, message, otp)
+    end
+
+    def self.verification(country_code, mobile, otp)
+      Otp.verify_otp(country_code, mobile, otp)
     end
   end
 
