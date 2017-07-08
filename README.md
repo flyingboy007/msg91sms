@@ -106,7 +106,7 @@ _country_code:_ country code without + or zeros EG: `"91"` for india
 
 _mobile:_ mobile number without starting zeros or country code eg: `"7234567891"`
 
-_otp:_ otp recieved from user for verifying, eg: `"2277"`
+_otp_to_verify:_ otp recieved from user for verifying, eg: `"2277"`
 
 **Example**
 

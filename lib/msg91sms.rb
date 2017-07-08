@@ -30,18 +30,35 @@ module Msg91sms
 
   class TransactionalSms
     def self.deliver(sender, country_code, mobiles, message)
-      Transactional.send_transactional(sender, country_code, mobiles, message)
+      #verify mobile number manually else send error message as msg91 would
+      if Msg91sms.verify_mobile?(mobiles)
+        Transactional.send_transactional(sender, country_code, mobiles, message)
+      else
+        response='{"message":"Please Enter valid mobile no","type":"error"}'
+        JSON.parse(response)
+    end
     end
   end
 
   class OtpSms
     def self.generate(sender, country_code, mobiles, message=nil, otp=nil)
-      Otp.send_otp(sender, country_code, mobiles, message, otp)
+      #verify mobile number manually else send error message as msg91 would
+      if Msg91sms.verify_mobile?(mobiles)
+        Otp.send_otp(sender, country_code, mobiles, message, otp)
+      else
+        response='{"message":"Please Enter valid mobile no","type":"error"}'
+        JSON.parse(response)
+      end
     end
 
     def self.verification(country_code, mobile, otp)
       Otp.verify_otp(country_code, mobile, otp)
     end
+  end
+
+  #Helper method checking mobile number contains only numbers
+  def self.verify_mobile?(mobile)
+    mobile.scan(/\D/).empty?
   end
 
 
