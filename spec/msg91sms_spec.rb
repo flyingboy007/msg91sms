@@ -12,6 +12,11 @@ RSpec.describe Msg91sms do
       end
     end
 
+    it "sends returns error on invalid mobile_manual verification" do
+        request=Msg91sms::TransactionalSms.deliver("RDTEST","91", "hdhdhdhdhhd", "message")
+        expect(request['type']).to eq('error')
+    end
+
 
     it "returns success if successful" do
       VCR.use_cassette("msg91/transactional/success") do
@@ -27,6 +32,11 @@ RSpec.describe Msg91sms do
         request=Msg91sms::OtpSms.generate("RDTEST", "94", "94", "Your otp is 2222", "2222")
         expect(request['type']).to eq('error')
       end
+    end
+
+    it "sends returns error on invalid mobile manual verification" do
+        request=Msg91sms::OtpSms.generate("RDTEST", "94", "jdjdjdjjdjdjd", "Your otp is 2222", "2222")
+        expect(request['type']).to eq('error')
     end
 
     it "returns success if successful" do
@@ -57,6 +67,11 @@ RSpec.describe Msg91sms do
         request=Msg91sms::OtpSms.generate("RDTEST", "94", "94")
         expect(request['type']).to eq('error')
       end
+    end
+
+    it "sends returns error on invalid mobile manual verification" do
+        request=Msg91sms::OtpSms.generate("RDTEST", "94", "djdjjdjdjd")
+        expect(request['type']).to eq('error')
     end
 
     it "returns success if successful" do
