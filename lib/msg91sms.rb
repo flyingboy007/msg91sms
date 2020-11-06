@@ -41,18 +41,18 @@ module Msg91sms
   end
 
   class OtpSms
-    def self.generate(sender, country_code, mobiles, message = nil, otp = nil, template_id)
+    def self.generate(country_code:, mobile:, message: nil, otp: nil, template_id:, sender: nil, otp_length: 6, otp_expiry: 15, invisible: 0)
       #verify mobile number manually else send error message as msg91 would
-      if Msg91sms.verify_mobile?(country_code, mobiles)
-        Otp.send_otp(sender, country_code, mobiles, message, otp, template_id)
+      if Msg91sms.verify_mobile?(country_code, mobile)
+        Otp.send_otp(sender, country_code, mobile, message, otp, template_id, otp_length, otp_expiry, invisible)
       else
         response = '{"message":"Please Enter valid mobile no","type":"error"}'
         JSON.parse(response)
       end
     end
 
-    def self.verification(country_code, mobile, otp)
-      Otp.verify_otp(country_code, mobile, otp)
+    def self.verification(country_code:, mobile:, otp:, otp_expiry: 15)
+      Otp.verify_otp(country_code, mobile, otp, otp_expiry)
     end
   end
 

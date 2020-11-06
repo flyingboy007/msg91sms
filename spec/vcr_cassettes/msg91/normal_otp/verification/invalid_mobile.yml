@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.msg91.com/api/v5/otp/verify?authkey=345575AojIoN0SnUla5f973f6bP1&mobile=949446716017&otp=5fa3a76155f33b28127ce2ed
+    uri: https://api.msg91.com/api/v5/otp/verify?authkey=345575AojIoN0SnUla5f973f6bP1&mobile=919446716017&otp=5580&otp_expiry=15
     body:
       encoding: UTF-8
       string: ''
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 05 Nov 2020 11:01:04 GMT
+      - Fri, 06 Nov 2020 07:16:06 GMT
       Content-Type:
       - text/html; charset=UTF-8
       Transfer-Encoding:
@@ -33,7 +33,7 @@ http_interactions:
       Server:
       - nginx
       Set-Cookie:
-      - PHPSESSID=hiomq31l4tvl9fav63n5jke1r3; expires=Sun, 15-Nov-2020 11:01:04 GMT;
+      - PHPSESSID=c49v6sh3hu8rc12f6r8qebqge3; expires=Mon, 16-Nov-2020 07:16:05 GMT;
         Max-Age=864000; path=/; HttpOnly
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
@@ -43,6 +43,6 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"message":"Otp empty or not numeric","type":"error"}'
-  recorded_at: Thu, 05 Nov 2020 11:01:04 GMT
+      string: '{"message":"OTP not match","type":"error"}'
+  recorded_at: Fri, 06 Nov 2020 07:16:06 GMT
 recorded_with: VCR 6.0.0
