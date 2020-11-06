@@ -4,7 +4,7 @@ RSpec.describe Msg91sms do
   it "has a version number" do
     expect(Msg91sms::VERSION).not_to be nil
   end
-  context "Transactional SMS" do
+  context "Transactional SMS", skip: true  do
     it "sends returns error on invalid mobile" do
       VCR.use_cassette("msg91/transactional/invalid_mobile") do
         request=Msg91sms::TransactionalSms.deliver("RDTEST","91", "94", "message")
@@ -26,7 +26,7 @@ RSpec.describe Msg91sms do
     end
   end
 
-  context "custom Otp Sms" do
+  context "custom Otp Sms", skip: true do
     it "sends returns error on invalid mobile" do
       VCR.use_cassette("msg91/custom_otp/invalid_mobile") do
         request=Msg91sms::OtpSms.generate("RDTEST", "94", "94", "Your otp is 2222", "2222")
@@ -41,7 +41,7 @@ RSpec.describe Msg91sms do
 
     it "returns success if successful" do
       VCR.use_cassette("msg91/custom_otp/success") do
-        request=Msg91sms::OtpSms.generate("RDTEST", "91", "8553445441", "Your otp is 2222", "2222")
+        request=Msg91sms::OtpSms.generate("RDTEST", "91", "9446716017", "Your otp is 2222", "2222")
         expect(request['type']).to eq('success')
       end
     end
@@ -64,19 +64,42 @@ RSpec.describe Msg91sms do
   context "Normal Otp Sms" do
     it "sends returns error on invalid mobile" do
       VCR.use_cassette("msg91/normal_otp/invalid_mobile") do
-        request=Msg91sms::OtpSms.generate("RDTEST", "94", "94")
+        request=Msg91sms::OtpSms.generate("RDTEST", "94", "94", "5fa3a76155f33b28127ce2ed")
         expect(request['type']).to eq('error')
       end
     end
 
     it "sends returns error on invalid mobile manual verification" do
-        request=Msg91sms::OtpSms.generate("RDTEST", "94", "djdjjdjdjd")
+        request=Msg91sms::OtpSms.generate("RDTEST", "94", "djdjjdjdjd", "5fa3a76155f33b28127ce2ed")
         expect(request['type']).to eq('error')
     end
 
     it "returns success if successful" do
       VCR.use_cassette("msg91/normal_otp/success") do
-        request=Msg91sms::OtpSms.generate("RDTEST", "91", "8553445441")
+        request=Msg91sms::OtpSms.generate("RDTEST", "91", "9446716017", "5fa3a76155f33b28127ce2ed")
+        expect(request['type']).to eq('success')
+      end
+    end
+  end
+
+  context "Verify Otp Sms" do
+    it "sends returns error on invalid otp" do
+      VCR.use_cassette("msg91/normal_otp/verification/invalid_mobile") do
+        request=Msg91sms::OtpSms.verification("94", "9446716017", "5fa3a76155f33b28127ce2ed")
+        expect(request['type']).to eq('error')
+      end
+    end
+
+    it "sends returns error on invalid mobile manual verification" do
+      VCR.use_cassette("msg91/normal_otp/verification/invalid_mobile_manual") do
+      request=Msg91sms::OtpSms.verification("94", "djdjjdjdjd", "2222")
+      expect(request['type']).to eq('error')
+    end
+    end
+
+    it "returns success if successful" do
+      VCR.use_cassette("msg91/normal_otp/verification/success") do
+        request=Msg91sms::OtpSms.verification("91", "9446716017", "7215")
         expect(request['type']).to eq('success')
       end
     end

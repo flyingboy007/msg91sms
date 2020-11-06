@@ -99,7 +99,7 @@ _otp:_ otp code, eg: `"2277"`(optional)
 * **Otp Verification**
 
 ```ruby
-     Msg91sms::OtpSms.verification(country_code, mobile, otp_to_verify)  
+     Msg91sms::OtpSms.verification(country_code, mobile, otp_to_verify, expiry)  
 ```
 
 _country_code:_ country code without + or zeros EG: `"91"` for india
@@ -107,6 +107,7 @@ _country_code:_ country code without + or zeros EG: `"91"` for india
 _mobile:_ mobile number without starting zeros or country code eg: `"7234567891"`
 
 _otp_to_verify:_ otp recieved from user for verifying, eg: `"2277"`
+_expiry:_ Expiry date, eg: `"2277"`
 
 **Example**
 

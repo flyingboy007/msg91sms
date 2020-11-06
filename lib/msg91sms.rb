@@ -31,22 +31,22 @@ module Msg91sms
   class TransactionalSms
     def self.deliver(sender, country_code, mobiles, message)
       #verify mobile number manually else send error message as msg91 would
-      if Msg91sms.verify_mobile?(mobiles)
+      if Msg91sms.verify_mobile?(mobiles, country_code)
         Transactional.send_transactional(sender, country_code, mobiles, message)
       else
-        response='{"message":"Please Enter valid mobile no","type":"error"}'
+        response = '{"message":"Please Enter valid mobile no","type":"error"}'
         JSON.parse(response)
-    end
+      end
     end
   end
 
   class OtpSms
-    def self.generate(sender, country_code, mobiles, message=nil, otp=nil)
+    def self.generate(sender, country_code, mobiles, message = nil, otp = nil, template_id)
       #verify mobile number manually else send error message as msg91 would
-      if Msg91sms.verify_mobile?(mobiles)
-        Otp.send_otp(sender, country_code, mobiles, message, otp)
+      if Msg91sms.verify_mobile?(country_code, mobiles)
+        Otp.send_otp(sender, country_code, mobiles, message, otp, template_id)
       else
-        response='{"message":"Please Enter valid mobile no","type":"error"}'
+        response = '{"message":"Please Enter valid mobile no","type":"error"}'
         JSON.parse(response)
       end
     end
@@ -57,8 +57,14 @@ module Msg91sms
   end
 
   #Helper method checking mobile number contains only numbers
-  def self.verify_mobile?(mobile)
-    mobile.scan(/\D/).empty?
+  def self.verify_mobile?(country_code, mobile)
+    if (country_code == "91")
+      #currently only handles India(10 digits). For each supported country add
+      min_mobile_length = 10
+    else
+      min_mobile_length = 0
+    end
+    mobile.scan(/\D/).empty? && mobile.size == min_mobile_length
   end
 
 
