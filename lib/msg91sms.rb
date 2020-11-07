@@ -51,6 +51,16 @@ module Msg91sms
       end
     end
 
+    def self.resend(country_code:, mobile:, retry_type: 'text')
+      #verify mobile number manually else send error message as msg91 would
+      if Msg91sms.verify_mobile?(country_code, mobile)
+        Otp.resend_otp(country_code, mobile, retry_type)
+      else
+        response = '{"message":"Please Enter valid mobile no","type":"error"}'
+        JSON.parse(response)
+      end
+    end
+
     def self.verification(country_code:, mobile:, otp:, otp_expiry: 15)
       Otp.verify_otp(country_code, mobile, otp, otp_expiry)
     end

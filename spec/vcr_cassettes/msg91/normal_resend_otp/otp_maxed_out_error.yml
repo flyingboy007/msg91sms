@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.msg91.com/api/v5/otp/retry?authkey=345575AojIoN0SnUla5f973f6bP1&mobile=919446716017&retry_type=text
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.msg91.com
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 07 Nov 2020 08:24:46 GMT
+      Content-Type:
+      - text/html; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Set-Cookie:
+      - PHPSESSID=mu3gq398fgfdh1h058iscgi7i1; expires=Tue, 17-Nov-2020 08:24:46 GMT;
+        Max-Age=864000; path=/; HttpOnly
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: '{"message":"OTP retry count maxed out","type":"error"}'
+  recorded_at: Sat, 07 Nov 2020 08:24:46 GMT
+recorded_with: VCR 6.0.0

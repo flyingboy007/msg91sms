@@ -4,6 +4,7 @@ RSpec.describe Msg91sms do
   it "has a version number" do
     expect(Msg91sms::VERSION).not_to be nil
   end
+=begin
   context "Transactional SMS", skip: true do
     it "sends returns error on invalid mobile" do
       VCR.use_cassette("msg91/transactional/invalid_mobile") do
@@ -25,6 +26,7 @@ RSpec.describe Msg91sms do
       end
     end
   end
+=end
 
 =begin
   context "custom Otp Sms", skip: true do
@@ -82,6 +84,40 @@ RSpec.describe Msg91sms do
         expect(request['type']).to eq('success')
       end
     end
+
+
+  end
+
+  context "Normal resend Sms" do
+    it "sends returns error on mobile with otp not generated" do
+      VCR.use_cassette("msg91/normal_resend_otp/not_found_mobile_error") do
+        request = Msg91sms::OtpSms.resend(country_code: "91", mobile: "9455555555")
+        expect(request['type']).to eq('error')
+      end
+    end
+
+    it "returns error if last_request_invalid_now" do
+      VCR.use_cassette("msg91/normal_resend_otp/last_request_invalid_now") do
+        request = Msg91sms::OtpSms.resend(country_code: "91", mobile: "9446716017", retry_type: "text")
+        expect(request['type']).to eq('error')
+      end
+    end
+
+    it "returns success if successful" do
+      VCR.use_cassette("msg91/normal_resend_otp/success_voice") do
+        request = Msg91sms::OtpSms.resend(country_code: "91", mobile: "9446716017", retry_type: "voice")
+        expect(request['type']).to eq('success')
+      end
+    end
+
+    it "returns success if successful" do
+      VCR.use_cassette("msg91/normal_resend_otp/otp_maxed_out_error") do
+        request = Msg91sms::OtpSms.resend(country_code: "91", mobile: "9446716017", retry_type: "text")
+        expect(request['type']).to eq('error')
+      end
+    end
+
+
   end
 
   context "Verify Otp Sms" do
