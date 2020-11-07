@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 06 Nov 2020 07:16:05 GMT
+      - Sat, 07 Nov 2020 01:48:07 GMT
       Content-Type:
       - text/html; charset=UTF-8
       Transfer-Encoding:
@@ -35,7 +35,7 @@ http_interactions:
       Server:
       - nginx
       Set-Cookie:
-      - PHPSESSID=cvbhu5ckktkutrubcj5699d3q1; expires=Mon, 16-Nov-2020 07:16:05 GMT;
+      - PHPSESSID=1390fi2gsdrvmetrfr1417ib20; expires=Tue, 17-Nov-2020 01:48:07 GMT;
         Max-Age=864000; path=/; HttpOnly
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
@@ -45,6 +45,6 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"request_id":"306b666c5465343731333337","type":"success"}'
-  recorded_at: Fri, 06 Nov 2020 07:16:05 GMT
+      string: '{"request_id":"306b67677267383030333337","type":"success"}'
+  recorded_at: Sat, 07 Nov 2020 01:48:07 GMT
 recorded_with: VCR 6.0.0
